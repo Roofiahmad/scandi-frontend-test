@@ -1,0 +1,140 @@
+.ProgressBar {
+    background-color: $default-secondary-base-color;
+    height: 10vh;
+    display: flex;
+    .Shipping{
+        width: 30%;
+        display: flex;
+        align-items: baseline;
+        &-bar-container{
+            width: 100%;
+        }
+        &-bar{
+            height: 5px;
+            width: 100%;
+            background-color: lighten($default-secondary-dark-color, 20%);
+            border-radius: 3px;
+            
+            &_isActive{
+                background-color: $default-primary-base-color ;
+                animation-name: progress;
+                animation-duration: 2s;
+            }
+        }
+        &-status{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        &-numb{
+            height: 30px;
+            width: 30px;
+            border-radius: 50%;
+            margin: 0 1rem;
+            background-color: lighten($default-secondary-dark-color, 20%);
+            color:$default-secondary-dark-color;
+            text-align: center;
+            font-size: 1.6rem;
+            font-weight: 600;
+            
+            &_isActive{
+                background-color: $default-primary-base-color ;
+                color:$white;
+            }
+
+        }
+        &-info{
+            width: max-content;
+            color:$default-secondary-dark-color;
+            font-weight: 600;
+            position: absolute;
+            top: 30px;
+            
+            &_isActive{
+                color:$black;
+            }
+        }
+        &-checklist{
+            color: $white;
+            font-size: 1.6rem;
+            transform: rotateZ(40deg);
+        }
+    }
+
+    .Payment{
+        width: 30%;
+        display: flex;
+        align-items: baseline;
+        &-bar-container{
+            width: 100%;
+        }
+        &-bar{
+            height: 5px;
+            background-color: lighten($default-secondary-dark-color, 20%);
+            width: 100%;
+            border-radius: 3px;
+              
+            &_isActive{
+                background-color: $default-primary-base-color ;
+                animation-name: progress;
+                animation-duration: 2s;
+            }
+        }
+        &-status{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        &-numb{
+            height: 30px;
+            width: 30px;
+            border-radius: 50%;
+            margin: 0 1rem;
+            background-color: lighten($default-secondary-dark-color, 20%);
+            text-align: center;
+            color:$default-secondary-dark-color;
+            font-size: 1.6rem;
+            font-weight: 600;
+            
+            &_isActive{
+                color: $white;
+                background-color: $default-primary-base-color ;
+            }
+        }
+        &-info{
+            width: max-content;
+            color:$default-secondary-dark-color;
+            font-weight: 600;
+            position: absolute;
+            top: 30px;
+            
+            &_isActive{
+                color: $black;
+            }
+        }
+    }
+
+    .Endbar{
+        width: 40%;
+        display: flex;
+        &-bar{
+            margin-top: 13px;
+            height: 5px;
+            width: 100%;
+            background-color: lighten($default-secondary-dark-color, 20%);
+            border-radius: 3px;
+            
+            &_isActive{
+                background-color: $default-primary-base-color ;
+            }
+        }
+    }
+
+
+}
+
+
+@keyframes progress {
+    0%   {width: 0%;}
+    100% {width: 100%;}
+  }
