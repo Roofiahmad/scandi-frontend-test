@@ -1,8 +1,8 @@
 .ProgressBar {
     background-color: $default-secondary-base-color;
-    height: 15vh;
+    height: 10vh;
     display: flex;
-    align-items: center;
+    align-items: baseline;
     .Shipping, .Payment{
         width: 30%;
         display: flex;
