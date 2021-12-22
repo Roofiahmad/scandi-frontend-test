@@ -8,6 +8,7 @@ export class ProgressBar extends PureComponent {
         checkoutStep: PropTypes.string.isRequired
     };
 
+
     renderShipping(){
         const {checkoutStep} = this.props;
         const shippingBar = checkoutStep === 'SHIPPING_STEP' || checkoutStep === 'BILLING_STEP' || checkoutStep === 'DETAILS_STEP';
@@ -28,15 +29,7 @@ export class ProgressBar extends PureComponent {
         )
     }
 
-    renderComplete(){
-        const {checkoutStep} = this.props;
-        const completeBar = checkoutStep === 'DETAILS_STEP';
-        return (
-            <div block="Endbar">
-                <div block="Endbar" elem="bar" mods={{isActive : completeBar}}></div>
-            </div>
-        )
-    }
+
 
     renderPayment(){
         const {checkoutStep} = this.props;
@@ -49,11 +42,21 @@ export class ProgressBar extends PureComponent {
             </div>
             <div block="Payment" elem="status">
                 <p block="Payment" elem="numb" mods={{isActive : paymentBar}}>
-                {completeBar? (<button block="Shipping" elem="checklist">&#8515;</button>) : (<span>2</span>)}
+                {completeBar? (<button block="Payment" elem="checklist">&#8515;</button>) : (<span>2</span>)}
                 </p>
                 <p block="Payment" elem="info" mods={{isActive : paymentBar}} >Review & Payments</p>
             </div>
         </div>
+        )
+    }
+
+    renderComplete(){
+        const {checkoutStep} = this.props;
+        const completeBar = checkoutStep === 'DETAILS_STEP';
+        return (
+            <div block="Endbar">
+                <div block="Endbar" elem="bar" mods={{isActive : completeBar}}></div>
+            </div>
         )
     }
 

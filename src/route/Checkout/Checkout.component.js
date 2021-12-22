@@ -20,7 +20,6 @@ export class Checkout extends SourceCheckout {
  
     render() {
         return (
-     
             <main block="Checkout">
                 { this.renderProgressBar() }
                 <ContentWrapper
