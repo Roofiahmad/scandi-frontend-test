@@ -3,6 +3,9 @@ import { PureComponent } from 'react';
 
 import './ProgressBar.style';
 
+import {
+    BILLING_STEP, DETAILS_STEP, SHIPPING_STEP} from './ProgressBar.config';
+
 export class ProgressBar extends PureComponent {
     static propTypes = {
         checkoutStep: PropTypes.string.isRequired
@@ -12,8 +15,8 @@ export class ProgressBar extends PureComponent {
     
     renderShipping(){
         const {checkoutStep} = this.props;
-        const shippingBar = checkoutStep === 'SHIPPING_STEP' || checkoutStep === 'BILLING_STEP' || checkoutStep === 'DETAILS_STEP';
-        const paymentBar = checkoutStep === 'BILLING_STEP' || checkoutStep === 'DETAILS_STEP';
+        const shippingBar = checkoutStep === SHIPPING_STEP || checkoutStep === BILLING_STEP || checkoutStep === DETAILS_STEP;
+        const paymentBar = checkoutStep === BILLING_STEP || checkoutStep === DETAILS_STEP;
         return (
             <div block="Shipping">
             <div block="Shipping" elem="bar-container">
@@ -34,8 +37,8 @@ export class ProgressBar extends PureComponent {
 
     renderPayment(){
         const {checkoutStep} = this.props;
-        const paymentBar = checkoutStep === 'BILLING_STEP' || checkoutStep === 'DETAILS_STEP';
-        const completeBar = checkoutStep === 'DETAILS_STEP';
+        const paymentBar = checkoutStep === BILLING_STEP || checkoutStep === DETAILS_STEP;
+        const completeBar = checkoutStep === DETAILS_STEP;
         return (
             <div block="Payment">
             <div block="Payment" elem="bar-container">
@@ -53,7 +56,7 @@ export class ProgressBar extends PureComponent {
 
     renderComplete(){
         const {checkoutStep} = this.props;
-        const completeBar = checkoutStep === 'DETAILS_STEP';
+        const completeBar = checkoutStep === DETAILS_STEP;
         return (
             <div block="Endbar">
                 <div block="Endbar" elem="bar" mods={{isActive : completeBar}}></div>
