@@ -4,7 +4,7 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
     align-items: center;
-    .Shipping, .Payment{
+    .Stepbar{
         width:auto;
         display: flex;
         align-items: baseline;
@@ -62,23 +62,6 @@
             transform: rotateZ(40deg);
         }
     }
-
-    .Endbar{
-        width: auto;
-        display: flex;
-        &-bar{
-            height: 5px;
-            width: 100%;
-            background-color: lighten($default-secondary-dark-color, 20%);
-            border-radius: 3px;
-            
-            &_isActive{
-                background-color: $default-primary-base-color ;
-            }
-        }
-    }
-
-
 }
 
 

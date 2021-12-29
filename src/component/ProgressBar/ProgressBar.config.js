@@ -8,6 +8,7 @@ export const CHECKOUT_CODE = {
 };
 
 export const checkPointList = [
-    {name: 'Shipping', activeCode: 1, completeCode:2, displayText: 'Shipping'},
-    {name: 'Payment', activeCode: 2, completeCode:3, displayText: 'Review & Payment'},
+    {name: 'Shipping', activeCode: 1, completeCode:2, displayText: 'Shipping', isCheckPointRender: true},
+    {name: 'Payment', activeCode: 2, completeCode:3, displayText: 'Review & Payment', isCheckPointRender: true},
+    {name: 'Endbar', activeCode: 3, isCheckPointRender: false},
 ]
