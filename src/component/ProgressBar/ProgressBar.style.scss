@@ -1,10 +1,14 @@
+$number-of-checkpoint: 2;
+$width-of-checkpoint-bar:30%;
+$width-of-endbar:40%;
 .ProgressBar {
     background-color: $default-secondary-base-color;
     height: 15vh;
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat($number-of-checkpoint, $width-of-checkpoint-bar) $width-of-endbar;
     align-items: center;
     .Shipping, .Payment{
-        width: 30%;
+        width:auto;
         display: flex;
         align-items: baseline;
         &-bar-container{
@@ -63,7 +67,7 @@
     }
 
     .Endbar{
-        width: 40%;
+        width: auto;
         display: flex;
         &-bar{
             height: 5px;

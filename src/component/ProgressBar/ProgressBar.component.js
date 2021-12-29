@@ -3,8 +3,7 @@ import { PureComponent } from 'react';
 
 import './ProgressBar.style';
 
-import {
-    BILLING_STEP, DETAILS_STEP, SHIPPING_STEP} from './ProgressBar.config';
+import { CHECKOUT_CODE, checkPointList} from './ProgressBar.config';
 
 export class ProgressBar extends PureComponent {
     static propTypes = {
@@ -12,54 +11,37 @@ export class ProgressBar extends PureComponent {
     };
 
 
-    
-    renderShipping(){
+    renderStepBar(){
         const {checkoutStep} = this.props;
-        const shippingBar = checkoutStep === SHIPPING_STEP || checkoutStep === BILLING_STEP || checkoutStep === DETAILS_STEP;
-        const paymentBar = checkoutStep === BILLING_STEP || checkoutStep === DETAILS_STEP;
         return (
-            <div block="Shipping">
-            <div block="Shipping" elem="bar-container">
-            <div block="Shipping" elem="bar" mods={{isActive : shippingBar}}>
-            </div>
-            </div>
-            <div block="Shipping" elem="status">
-                <p block="Shipping" elem="numb" mods={{isActive : shippingBar}} >
-                    {paymentBar ? (<button block="Shipping" elem="checklist">&#8515;</button>) : (<span>1</span>)}
-               </p>
-                <p block="Shipping" elem="info" mods={{isActive : shippingBar}} >Shipping</p>
-            </div>
-        </div>
+            checkPointList.map((item, index) => {
+                const isBarActive = CHECKOUT_CODE[checkoutStep] >= item.activeCode;
+                const isBarComplete = CHECKOUT_CODE[checkoutStep] >= item.completeCode;
+                  return (
+                    <div block={item.name}>
+                    <div block={item.name} elem="bar-container">
+                    <div block={item.name} elem="bar" mods={{isActive : isBarActive}}>
+                    </div>
+                    </div>
+                    <div block={item.name} elem="status">
+                        <p block={item.name} elem="numb" mods={{isActive : isBarActive}} >
+                            {isBarComplete ? (<button block={item.name} elem="checklist">&#8515;</button>) : (<span>{index+1}</span>)}
+                       </p>
+                        <p block={item.name} elem="info" mods={{isActive : isBarActive}} >{item.displayText}</p>
+                    </div>
+                </div>
+                )
+            } )
         )
     }
 
-
-
-    renderPayment(){
+    renderEndBar(){
         const {checkoutStep} = this.props;
-        const paymentBar = checkoutStep === BILLING_STEP || checkoutStep === DETAILS_STEP;
-        const completeBar = checkoutStep === DETAILS_STEP;
-        return (
-            <div block="Payment">
-            <div block="Payment" elem="bar-container">
-            <div block="Payment" elem="bar" mods={{isActive : paymentBar}}></div>
-            </div>
-            <div block="Payment" elem="status">
-                <p block="Payment" elem="numb" mods={{isActive : paymentBar}}>
-                {completeBar? (<button block="Payment" elem="checklist">&#8515;</button>) : (<span>2</span>)}
-                </p>
-                <p block="Payment" elem="info" mods={{isActive : paymentBar}} >Review & Payments</p>
-            </div>
-        </div>
-        )
-    }
-
-    renderComplete(){
-        const {checkoutStep} = this.props;
-        const completeBar = checkoutStep === DETAILS_STEP;
+        const checkoutCode = CHECKOUT_CODE[checkoutStep]
+        const isBarActive = checkoutCode >=3
         return (
             <div block="Endbar">
-                <div block="Endbar" elem="bar" mods={{isActive : completeBar}}></div>
+                <div block="Endbar" elem="bar" mods={{isActive : isBarActive}}></div>
             </div>
         )
     }
@@ -67,9 +49,8 @@ export class ProgressBar extends PureComponent {
     render() {
         return (
             <div block="ProgressBar">
-                {this.renderShipping()}
-                {this.renderPayment()}
-                {this.renderComplete()}
+                {this.renderStepBar()}
+                {this.renderEndBar()}
             </div>
         );
     }
